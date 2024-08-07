@@ -2,5 +2,5 @@ The above are the assignments i have completed in the course **MA-323 Monte carl
 
 Course website:https://www.iitg.ac.in/acad/CourseStructure/Btech2018/MA/MA323.html 
 
-**LAB 1** - This lab covered about general linear congruence generator, and Spectral Test for the random numbers.
+**LAB 1** - This lab covered about **_general linear congruence generator_**, and Spectral Test for the random numbers.
 **LAB 2** - Questions are based on General Sampling methods mainly **_Inverse transform method_**

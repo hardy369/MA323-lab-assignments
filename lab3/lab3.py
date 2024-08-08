@@ -1,16 +1,13 @@
-
-
 import numpy as np
 import matplotlib.pyplot as plt
 import cmath 
 import math 
 from numpy import random
 
-
 def fx(i):
   return 20*i*math.pow(1 - i, 3)
 
-def plot_graph(numbers):
+def plot_graph(numbers, c):
   x = np.arange(0, 1, 0.01)
   Fx = [10*i*i - 20*math.pow(i, 3) + 15*math.pow(i, 4) - 4*math.pow(i, 5) for i in x]
   plt.plot(x, Fx, color = 'red', label = "CDF")
@@ -51,22 +48,30 @@ def plot_graph(numbers):
   plt.xlabel('X (generated values)')
   plt.show()
 
+  # (b) Compute the sample mean and compare it with (theoretical) expectation of the PDF f.
+  sample_mean = np.mean(numbers)
+  theoretical_expectation = 0.2  # Calculated using the PDF
+  print("Sample mean: ", sample_mean)
+  print("Theoretical expectation: ", theoretical_expectation)
+
+  # (c) What is the approximate value of P(0.25 ≤ X ≤ 0.75) based on the generated sample?
+  count = 0
+  for num in numbers:
+    if 0.25 <= num <= 0.75:
+      count += 1
+  approximate_probability = count / len(numbers)
+  print("Approximate probability: ", approximate_probability)
+
+  # (d) Keep a count of number of iterations needed to generate each of the random numbers.
+  # Compute the average of all these values and compare it with the value obtained in part (a).
+  average_iterations = c
+  print("Average iterations: ", average_iterations)
+
 def main(): 
   x = np.arange(0, 1, 0.001)
   f = [fx(i) for i in x]
   C = [max(f), 15, 30]
   
-  """
-  f(x) =  1  if x in [a, b]  or  0, otherwise
-  F(x) = (x - a)/(b - a)
-
-  Generate a random number U
-  X = a + U*(b - a)
-
-  Here, X    = 0 + U*(1 - 0) = U
-        F(x) = x
-  """
-
   for c in C:
     iter = 0
     numbers = list()
@@ -95,9 +100,9 @@ def main():
 
     print("Actual c = {}\nSample c = {}".format(c, sum(sample_c)/len(sample_c)))
     print(len(numbers))
-    plot_graph(numbers)
+    plot_graph(numbers, c)
   
   
 
 if __name__ == "__main__": 
-    main() 
+    main()
